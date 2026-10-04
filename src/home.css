@@ -1,0 +1,132 @@
+/* Homepage chapters are translated as a whole; the document never free-scrolls. */
+html.is-home, .is-home body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+.home-deck { position: relative; height: 100vh; height: 100dvh; overflow: clip; isolation: isolate; }
+.home-track { height: 100%; transition: transform .75s cubic-bezier(.65,0,.25,1); }
+.home-layer { position: relative; width: 100%; height: 100%; overflow: clip; }
+.home-hero .headertop, .home-hero .centerbg { height: 100%; min-height: 0; animation: none; }
+.home-hero .hero-wave { display: none; }
+.is-home .site-header .header-inner { background: transparent; box-shadow: none; color: #fff; text-shadow: 0 1px 8px #14233455; }
+.is-home .site-header[data-home-layer="2"] .header-inner { color: var(--ink); text-shadow: none; }
+.is-home .site-header[data-home-layer="2"] .blog-nav a:hover, .is-home .site-header[data-home-layer="2"] .blog-nav a[aria-current] { color: var(--blue-ink); }
+.home-layer-nav { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 12px; }
+.home-layer-nav button { position: relative; display: grid; place-items: center; padding: 8px; border: 0; border-radius: 50%; background: transparent; color: #fff; }
+.home-layer-nav i { display: block; width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; background: #ffffff60; box-shadow: 0 0 0 4px #17233820; transition: transform .25s, background .25s; }
+.home-layer-nav [aria-current="step"] i { transform: scale(1.4); background: var(--apricot); border-color: var(--apricot); }
+.home-layer-nav span { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 3px 10px; border-radius: 20px; background: #192436b3; color: white; opacity: 0; pointer-events: none; font-size: 11px; transition: opacity .2s; }
+.home-layer-nav button:hover span, .home-layer-nav button:focus-visible span { opacity: 1; }
+.home-deck[data-layer="2"] .home-layer-nav button { color: var(--blue-ink); text-shadow: none; }
+.home-layer-heading { text-align: center; }
+.home-layer-heading > span { display: block; font: 10px/1.5 Consolas, monospace; letter-spacing: 4px; opacity: .75; }
+.home-layer-heading h2 { margin: 5px 0 0; font-size: clamp(22px, 3vw, 32px); font-weight: 500; letter-spacing: 4px; }
+.home-layer-heading p { margin: 2px 0 0; font-size: 12px; opacity: .75; }
+.home-compass { background: #26364d; color: #fff; }
+.compass-backgrounds, .compass-glass { position: absolute; inset: 0; pointer-events: none; }
+.compass-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; transform: scale(1.1); opacity: 0; transition: opacity .65s ease; }
+.compass-backdrop.is-current { opacity: 1; }
+.compass-glass { background: linear-gradient(130deg, #4c527366, #1b2b4b9c 75%), #1c283853; backdrop-filter: blur(25px) saturate(.8); -webkit-backdrop-filter: blur(25px) saturate(.8); }
+html[data-theme="dark"] .compass-glass { background: linear-gradient(130deg, #34304799, #131c32b5), #14233460; }
+.compass-scene { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(10px, 2vh, 22px); padding: 50px 70px 42px; }
+.compass-map { --dial-size: clamp(140px, 24vh, 210px); --card-height: clamp(110px, 19vh, 170px); width: min(1030px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(var(--dial-size), 1fr) minmax(0, 1fr); grid-template-rows: var(--card-height) var(--dial-size) var(--card-height); gap: clamp(12px, 2.4vh, 24px) 32px; align-items: center; justify-items: center; position: relative; }
+.compass-map::before, .compass-map::after { content: ''; position: absolute; width: calc(var(--dial-size) * 2.4); aspect-ratio: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 1px solid #e1dbe91a; border-radius: 50%; pointer-events: none; }
+.compass-map::after { width: calc(var(--dial-size) * 1.85); border-radius: 50%; border-color: #9cbce317; }
+.compass-card { position: relative; display: block; width: 100%; height: var(--card-height); overflow: hidden; border: 1px solid #e1dbe972; border-radius: 18px; color: #fff; box-shadow: 0 10px 32px #101a332b; transition: border-color .3s, box-shadow .3s, transform .3s; z-index: 1; }
+.compass-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.compass-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#15203608, #1621339e); pointer-events: none; }
+.compass-card:hover img { transform: scale(1.05); }
+.compass-card:hover, .compass-card.is-pointed { border-color: var(--apricot); box-shadow: 0 0 0 3px #f5c38630, 0 0 30px #e1dbe94d, 0 10px 35px #101a334d; transform: translateY(-3px); color: #fff; }
+.compass-north { grid-area: 1 / 2; }.compass-east { grid-area: 2 / 3; }.compass-south { grid-area: 3 / 2; }.compass-west { grid-area: 2 / 1; }
+.compass-card-direction { position: absolute; z-index: 2; top: 12px; left: 15px; display: flex; align-items: center; gap: 9px; font: 600 11px/1 Consolas, monospace; }
+.compass-card-direction small { font-size: 10px; opacity: .6; font-weight: 400; }
+.compass-card-direction::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--lavender); }
+.is-pointed .compass-card-direction::before { background: var(--apricot); box-shadow: 0 0 8px var(--apricot); }
+.compass-card-copy { position: absolute; z-index: 2; bottom: 12px; left: 16px; right: 16px; text-shadow: 0 2px 8px #0004; }
+.compass-card-copy h3 { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 19px; margin: 0; font-weight: 500; }
+.compass-card-copy h3 span { font-size: 16px; color: var(--apricot); opacity: 0; transition: opacity .3s; }
+.is-pointed .compass-card-copy h3 span, .compass-card:hover h3 span { opacity: 1; }
+.compass-card-copy p { margin: 2px 0 0; font-size: 11px; color: #f2eff8dd; }
+.compass-center { grid-area: 2 / 2; width: var(--dial-size); height: var(--dial-size); position: relative; z-index: 2; }
+.compass-dial { display: block; width: 100%; height: 100%; border: 0; padding: 0; border-radius: 50%; background: radial-gradient(circle, #192b4326, transparent 68%); cursor: grab; touch-action: none; user-select: none; }
+.compass-dial:active { cursor: grabbing; }.compass-dial svg { width: 100%; height: 100%; display: block; }
+.dial-rim { fill: none; stroke: #e1dbe958; stroke-width: .7; }.dial-arcs { fill: none; stroke: #9cbce3c9; stroke-width: 2; stroke-linecap: round; }
+.dial-tick { stroke: #e1dbe975; stroke-width: 1; }.dial-tick-major { stroke: #e1dbe9e0; stroke-width: 1.6; }.dial-crosshair { fill: none; stroke: #9cbce34d; stroke-width: .8; }
+.compass-needle { transform: rotate(var(--needle-angle, 0deg)); transform-origin: 100px 100px; transition: transform .4s cubic-bezier(.22,.8,.25,1); filter: drop-shadow(0 1px 4px #14243650); }
+.is-dragging .compass-needle { transition: none; }.needle-body { fill: var(--apricot); stroke: #ffe6c4; stroke-width: .7; stroke-linejoin: round; }.needle-edge { fill: #fff0dccc; }.needle-guide { fill: none; stroke: #f5c38645; stroke-width: 1; }.dial-hub { fill: #26364d; stroke: #e1dbe9a6; stroke-width: 1; }.dial-pin { fill: var(--apricot); }
+.compass-center > span { position: absolute; font: 11px/1 Consolas, monospace; color: #e1dbe9cc; pointer-events: none; }
+.dial-north { top: -17px; left: 50%; transform: translateX(-50%); }.dial-south { bottom: -17px; left: 50%; transform: translateX(-50%); }.dial-west { left: -18px; top: 50%; transform: translateY(-50%); }.dial-east { right: -18px; top: 50%; transform: translateY(-50%); }
+.compass-help { margin: 0; font-size: 11px; letter-spacing: 2px; color: #f0edf5d9; }
+.compass-clock { position: absolute; top: 88px; left: 42px; z-index: 3; width: 280px; height: 165px; color: #fff; pointer-events: none; }
+.clock-date { position: absolute; top: 0; left: -7px; font: 800 150px/.85 "Arial", sans-serif; letter-spacing: -10px; color: var(--apricot); opacity: .75; }
+.clock-month { position: absolute; top: 66px; left: 5px; width: 265px; height: 32px; filter: drop-shadow(0 2px 6px #19243640); }
+.geometric-word { display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: butt; stroke-linejoin: bevel; }
+.clock-detail { position: absolute; left: 8px; top: 110px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font: 600 20px/1.8 Consolas, "Microsoft YaHei", monospace; letter-spacing: 1px; text-shadow: 0 1px 7px #15243666; }
+.clock-detail time { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.clock-period { width: 38px; height: 16px; }.clock-period .geometric-word { stroke-width: 3; }
+.clock-festival { display: inline-flex; gap: 8px; align-items: center; font-size: 11px; letter-spacing: 1px; }.clock-festival[hidden] { display: none; }.clock-dash { color: var(--blue); }
+.compass-caption { position: absolute; right: 42px; bottom: 28px; z-index: 3; max-width: calc(100% - 84px); min-height: 24px; color: #eeeaf3; font: 14px/1.8 Consolas, "Microsoft YaHei", monospace; letter-spacing: 2px; text-align: right; text-shadow: 0 1px 8px #14233480; }
+.compass-caption .terminal-cursor { background: var(--apricot); }
+.compass-caption[data-phase="typing"] .terminal-cursor { animation: none; opacity: 1; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .home-layer-nav { right: 7px; gap: 6px; }.home-layer-nav button { padding: 7px; }
+  .compass-scene { padding: 70px 32px 45px; gap: 25px; }
+  .compass-map { --dial-size: clamp(86px, 25vw, 140px); --card-height: clamp(100px, 17vh, 140px); grid-template-columns: minmax(0, 1fr) var(--dial-size) minmax(0, 1fr); gap: 26px 16px; }
+  .compass-north, .compass-south { width: clamp(155px, 45vw, 220px); }
+  .compass-west, .compass-east { height: calc(var(--card-height) + 15px); }
+  .compass-card { border-radius: 12px; }.compass-card-copy { left: 9px; right: 9px; bottom: 10px; }.compass-card-copy h3 { font-size: 14px; gap: 2px; }.compass-card-copy h3 span { font-size: 12px; }
+  .compass-west .compass-card-copy p, .compass-east .compass-card-copy p { display: none; }
+  .compass-card-direction { top: 9px; left: 10px; gap: 5px; font-size: 10px; }.compass-card-direction small { font-size: 8px; }
+  .compass-center > span { font-size: 9px; }.dial-west { left: -12px; }.dial-east { right: -12px; }
+  .compass-help { font-size: 10px; letter-spacing: 1px; }
+  
+  
+  
+  
+  
+  
+}
+@media (max-height: 700px) {
+  .compass-scene { gap: 10px; padding-top: 50px; padding-bottom: 32px; }.compass-map { --card-height: 100px; --dial-size: 145px; row-gap: 24px; }.home-layer-heading p { display: none; }
+  
+}
+@media (max-width: 768px) and (max-height: 700px) {
+  .compass-map { --dial-size: clamp(80px, 24vw, 120px); }
+}
+@media (max-width: 1000px) and (min-width: 769px) {
+  .compass-clock { left: 30px; width: 240px; }.clock-date { font-size: 120px; }.clock-month { top: 51px; width: 200px; height: 25px; }.clock-detail { top: 84px; font-size: 18px; }
+}
+@media (max-width: 768px) {
+  .compass-clock { top: 72px; left: 20px; width: 240px; height: 90px; }.clock-date { font-size: 94px; letter-spacing: -6px; left: -4px; }.clock-month { top: 35px; left: 3px; width: 184px; height: 22px; }.clock-detail { top: 63px; left: 4px; font-size: 16px; gap: 6px; }.clock-period { width: 30px; height: 13px; }.clock-festival { font-size: 10px; gap: 5px; }
+  .compass-caption { right: 25px; bottom: 34px; max-width: calc(100% - 45px); font-size: 12px; letter-spacing: 1px; }
+  .home-compass .compass-scene { padding-top: 155px; gap: 18px; }.home-compass .home-layer-heading > span { display: none; }.home-compass .home-layer-heading p { display: none; }.home-compass .home-layer-heading h2 { font-size: 20px; }
+}
+@media (max-width: 768px) and (max-height: 700px) {
+  .compass-clock { top: 57px; }.home-compass .compass-scene { padding-top: 135px; gap: 12px; }.home-compass .compass-map { --card-height: 90px; row-gap: 20px; }
+}
+@media (max-height: 500px) and (min-width: 500px) {
+  .compass-scene { padding: 24px 50px; gap: 5px; }.home-compass .home-layer-heading p, .home-compass .home-layer-heading h2, .compass-help { display: none; }
+  .compass-map { --dial-size: 100px; --card-height: 80px; row-gap: 16px; }.compass-card-copy p { display: none; }.compass-card-copy h3 { font-size: 14px; }
+  
+  .compass-clock { top: 70px; left: 22px; width: 165px; }.clock-date { font-size: 80px; letter-spacing: -5px; }.clock-month { top: 31px; width: 132px; height: 18px; }.clock-detail { top: 54px; font-size: 14px; }.clock-period { width: 26px; height: 11px; }.clock-festival { font-size: 9px; }.home-compass .compass-scene { padding-top: 24px; }.compass-caption { font-size: 11px; bottom: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .home-track, .compass-backdrop, .compass-needle, .compass-card, .compass-card img { transition: none; } }

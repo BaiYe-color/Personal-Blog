@@ -1,0 +1,57 @@
+{
+  "site": {
+    "name": "我的小站", "greeting": "Hi, welcome!", "description": "把平凡的日子，写成值得收藏的故事。",
+    "avatar": "/assets/images/default/avatar.webp", "cover": "/assets/images/default/hd.webp",
+    "pageCovers": {"articles": "/assets/images/default/hd.webp", "photos": "/assets/images/themes/gribs.jpg", "music": "/assets/images/themes/star02.png", "moments": "/assets/images/themes/kyotoanimation.png", "pet": "/assets/images/themes/sakura.png"},
+    "profile": {"name": "白晔", "bio": "记录生活，分享技术，收藏不经意间的灵感。", "wechatQr": null, "qqQr": null},
+    "notice": "欢迎来到我的个人空间。这里的文章、图片和动态目前是演示内容。",
+    "socials": [{"name": "GitHub", "url": "https://github.com/", "icon": "/assets/images/sns/github.png"}, {"name": "哔哩哔哩", "url": "https://www.bilibili.com/", "icon": "/assets/images/sns/bilibili.png"}]
+  },
+  "categories": [
+    {"slug": "technology", "name": "技术手记", "description": "开发中的思考、实践与一些有趣的小实验。", "cover": "/assets/images/default/hd.webp"},
+    {"slug": "life", "name": "生活碎片", "description": "记录日常里微小而明亮的瞬间。", "cover": "/assets/images/themes/gribs.jpg"},
+    {"slug": "inspiration", "name": "灵感收藏", "description": "书籍、音乐与不经意间冒出来的想法。", "cover": "/assets/images/themes/kyotoanimation.png"}
+  ],
+  "tags": [
+    {"slug": "web", "name": "前端", "description": "关于网页、交互与浏览器的探索。", "cover": "/assets/images/default/hd.webp"},
+    {"slug": "notes", "name": "随笔", "description": "不急着寻找答案，先把想法写下来。", "cover": "/assets/images/themes/gribs.jpg"},
+    {"slug": "design", "name": "设计", "description": "让细节与体验都恰到好处。", "cover": "/assets/images/themes/kyotoanimation.png"},
+    {"slug": "reading", "name": "阅读", "description": "在文字之间，遇见新的世界。", "cover": "/assets/images/themes/star02.png"}
+  ],
+  "posts": [
+    {"slug": "hello-world", "title": "给小站的第一封信", "excerpt": "从一个喜欢的主题开始，慢慢搭建属于自己的空间。记录想法，也收藏生活。", "publishedAt": "2026-10-04T09:00:00+08:00", "updatedAt": "2026-10-04T10:00:00+08:00", "recommended": true, "categories": ["life", "inspiration"], "tags": ["notes", "design"], "cover": "/assets/images/default/hd.webp", "status": "published",
+      "blocks": [{"type": "paragraph", "text": "欢迎来到我的小站。这是一篇演示文章，用来展示迁移后的文章阅读页。以后这里会放下真实的故事、技术笔记和生活记录。"}, {"type": "heading", "text": "为什么想拥有一个小站"}, {"type": "paragraph", "text": "有些想法值得被整理，有些时刻值得被记住。一个自己的空间，可以让这些零散的片段慢慢串起来。"}, {"type": "quote", "text": "把平凡的日子，写成值得收藏的故事。"}, {"type": "heading", "text": "从喜欢的风格开始"}, {"type": "paragraph", "text": "保留 Sakura 的大图首屏、交错文章卡片和阅读排版，同时让分类和标签更像一本随手可翻的书签册。"}, {"type": "image", "src": "/assets/images/default/hd.webp", "text": "首屏背景 · 演示素材"}, {"type": "heading", "text": "下一步"}, {"type": "paragraph", "text": "接下来会加入自己的内容管理后台，让文章、图片与站点设置都可以在网页里维护。"}]},
+    {"slug": "frontend-migration", "title": "让一个主题拥有独立的生命", "excerpt": "保留熟悉的视觉，重新连接数据。从依赖 Halo 的主题，到独立运行的个人前端。", "publishedAt": "2026-10-03T08:00:00+08:00", "updatedAt": "2026-10-04T12:00:00+08:00", "categories": ["technology", "inspiration"], "tags": ["web", "design"], "cover": "/assets/images/themes/kyotoanimation.png", "status": "published",
+      "blocks": [{"type": "paragraph", "text": "主题的视觉和内容管理系统可以分开。迁移时，我们复用了原来的样式与布局结构，替换了服务器模板语法。"}, {"type": "heading", "text": "保留视觉结构"}, {"type": "paragraph", "text": "文章卡片、封面与正文的布局继续沿用主题的 CSS。导航、搜索和图片预览改成独立的浏览器交互。"}, {"type": "heading", "text": "集中管理数据读取"}, {"type": "code", "language": "JavaScript", "text": "const response = await fetch('/data/content.json');\nconst content = await response.json();\nconsole.log(content.posts);"}, {"type": "heading", "text": "准备接入后台"}, {"type": "paragraph", "text": "页面统一从数据服务读取文章、分类、标签和站点配置。后续接入后台时，只需要替换数据服务并对齐字段。"}]},
+    {"slug": "slow-weekend", "title": "给周末留一点空白", "excerpt": "关掉多余的通知，读几页书，听一首歌。今天的计划是慢一点。", "publishedAt": "2026-10-02T10:00:00+08:00", "updatedAt": "2026-10-03T16:00:00+08:00", "categories": ["life"], "tags": ["notes", "reading"], "cover": "/assets/images/themes/gribs.jpg", "status": "published",
+      "blocks": [{"type": "paragraph", "text": "有时候，不安排满满当当的日程，也是一种安排。"}, {"type": "heading", "text": "窗边的下午"}, {"type": "paragraph", "text": "把书翻到上次停下的位置，让阳光落在纸页上。慢慢读，慢慢想。"}, {"type": "quote", "text": "不必每一天都很特别，认真感受就很好。"}, {"type": "heading", "text": "留住一个瞬间"}, {"type": "paragraph", "text": "文字和照片，让我们有机会再一次看见那些容易忽略的小事。"}]},
+    {"slug": "collect-inspiration", "title": "建立自己的灵感收藏夹", "excerpt": "把散落的想法整理成书签，让每一个主题都有一个可以重新打开的入口。", "publishedAt": "2026-10-01T08:00:00+08:00", "updatedAt": "2026-10-04T11:00:00+08:00", "categories": ["inspiration"], "tags": ["design", "reading"], "cover": "/assets/images/themes/star02.png", "status": "published",
+      "blocks": [{"type": "paragraph", "text": "灵感不总是准时出现，所以我开始随手记录它们。"}, {"type": "heading", "text": "分类与标签"}, {"type": "paragraph", "text": "分类像书架，标签像夹在页间的书签。一篇文章可以属于一个分类，也可以拥有多个标签。"}, {"type": "heading", "text": "收藏之后再整理"}, {"type": "paragraph", "text": "先把片段留下，再定期整理。让收藏成为创作的起点。"}]}
+  ],
+  "links": [
+    {"name": "Sakura", "description": "这个小站的视觉起点", "url": "https://github.com/LIlGG/halo-theme-sakura", "avatar": "/assets/images/default/avatar.webp", "group": "设计与创作"},
+    {"name": "GitHub", "description": "收藏代码与开源灵感", "url": "https://github.com/", "avatar": "/assets/images/sns/github.png", "group": "设计与创作"},
+    {"name": "MDN", "description": "探索 Web 的知识地图", "url": "https://developer.mozilla.org/zh-CN/", "avatar": "/assets/images/themes/little-monster.png", "group": "学习与探索"}
+  ],
+  "photos": [
+    {"id": "sky", "name": "天空与远方", "description": "抬头的时候，世界很宽。", "group": "风景", "src": "/assets/images/default/hd.webp"},
+    {"id": "memory", "name": "记忆的颜色", "description": "收藏一段柔软的时光。", "group": "插画", "src": "/assets/images/themes/kyotoanimation.png"},
+    {"id": "daily", "name": "日常片段", "description": "生活里的小小风景。", "group": "风景", "src": "/assets/images/themes/gribs.jpg"},
+    {"id": "star", "name": "星星的来信", "description": "有些光，来自很远的地方。", "group": "插画", "src": "/assets/images/themes/star02.png"},
+    {"id": "sakura", "name": "樱花季", "description": "留住春天的一角。", "group": "插画", "src": "/assets/images/themes/sakura.png"}
+  ],
+  "music": [
+    {"id": "afternoon", "name": "午后微风", "description": "适合窗边阅读的轻柔旋律。", "quote": "把一段安静，留给午后的窗边。", "artist": "音乐收藏", "album": "日光散步", "duration": "03:42", "group": "轻音乐", "cover": "/assets/images/default/hd.webp", "src": null},
+    {"id": "journey", "name": "远方来信", "description": "让思绪去往没有到过的地方。", "quote": "把地图折好，去往还没有名字的地方。", "artist": "音乐收藏", "album": "旅途原声", "duration": "04:18", "group": "原声", "cover": "/assets/images/themes/kyotoanimation.png", "src": null},
+    {"id": "night", "name": "夜色随想", "description": "把忙碌放下，听见晚风。", "quote": "夜色慢下来，耳朵便听见了风。", "artist": "音乐收藏", "album": "星河信号", "duration": "03:56", "group": "轻音乐", "cover": "/assets/images/themes/star02.png", "src": null},
+    {"id": "memory", "name": "时光的回声", "description": "有些旋律，会让人想起旧日的风景。", "quote": "有些旋律，会把旧日重新照亮。", "artist": "音乐收藏", "album": "回忆放映室", "duration": "05:07", "group": "原声", "cover": "/assets/images/themes/gribs.jpg", "src": null}
+  ],
+  "messages": [
+    {"id": "welcome", "name": "小站主人", "text": "欢迎来到留言板！有什么想法或者想说的话，都可以写在这里。这是一条演示留言。", "date": "2026-10-04T09:00:00+08:00"}
+  ],
+  "moments": [
+    {"id": "first", "date": "2026-10-04 15:00", "text": "小站开始搭建了。今天先把喜欢的样子留下来，再慢慢填上自己的故事。", "photos": ["/assets/images/default/hd.webp"]},
+    {"id": "weekend", "date": "2026-10-03 17:30", "text": "午后的阳光刚刚好。听歌、读书，给生活留一点空白。", "photos": []},
+    {"id": "inspiration", "date": "2026-10-02 20:15", "text": "收藏了一些灵感。想把分类和标签做成一本可以点击的书签册。", "photos": ["/assets/images/themes/gribs.jpg", "/assets/images/themes/kyotoanimation.png"]}
+  ]
+}
