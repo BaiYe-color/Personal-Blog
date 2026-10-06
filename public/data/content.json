@@ -3,7 +3,7 @@
     "name": "我的小站", "greeting": "Hi, welcome!", "description": "把平凡的日子，写成值得收藏的故事。",
     "avatar": "/assets/images/default/avatar.webp", "cover": "/assets/images/default/hd.webp",
     "pageCovers": {"articles": "/assets/images/default/hd.webp", "photos": "/assets/images/themes/gribs.jpg", "music": "/assets/images/themes/star02.png", "moments": "/assets/images/themes/kyotoanimation.png", "pet": "/assets/images/themes/sakura.png"},
-    "profile": {"name": "白晔", "bio": "记录生活，分享技术，收藏不经意间的灵感。", "wechatQr": null, "qqQr": null},
+    "profile": {"name": "白晔", "bio": "记录生活，分享技术，收藏不经意间的灵感。", "signature": "把日子过成可以回望的风景。", "birthday": "", "location": "", "school": "", "github": "BaiYe-color", "interests": [{"name": "音乐", "description": "把旋律收进每一个安静的片刻。", "image": "/assets/images/themes/star02.png"}, {"name": "阅读", "description": "在字句之间，和不同的世界相遇。", "image": "/assets/images/themes/kyotoanimation.png"}, {"name": "摄影", "description": "留住光线、天气与偶然经过的心情。", "image": "/assets/images/default/hd.webp"}, {"name": "设计", "description": "喜欢让细节刚好落在舒服的位置。", "image": "/assets/images/themes/gribs.jpg"}, {"name": "春天", "description": "总会为一场花开和一阵风停留。", "image": "/assets/images/themes/sakura.png"}], "wechatQr": null, "qqQr": null},
     "notice": "欢迎来到我的个人空间。这里的文章、图片和动态目前是演示内容。",
     "socials": [{"name": "GitHub", "url": "https://github.com/", "icon": "/assets/images/sns/github.png"}, {"name": "哔哩哔哩", "url": "https://www.bilibili.com/", "icon": "/assets/images/sns/bilibili.png"}]
   },
@@ -41,10 +41,10 @@
     {"id": "sakura", "name": "樱花季", "description": "留住春天的一角。", "group": "插画", "src": "/assets/images/themes/sakura.png"}
   ],
   "music": [
-    {"id": "afternoon", "name": "午后微风", "description": "适合窗边阅读的轻柔旋律。", "quote": "把一段安静，留给午后的窗边。", "artist": "音乐收藏", "album": "日光散步", "duration": "03:42", "group": "轻音乐", "cover": "/assets/images/default/hd.webp", "src": null},
-    {"id": "journey", "name": "远方来信", "description": "让思绪去往没有到过的地方。", "quote": "把地图折好，去往还没有名字的地方。", "artist": "音乐收藏", "album": "旅途原声", "duration": "04:18", "group": "原声", "cover": "/assets/images/themes/kyotoanimation.png", "src": null},
-    {"id": "night", "name": "夜色随想", "description": "把忙碌放下，听见晚风。", "quote": "夜色慢下来，耳朵便听见了风。", "artist": "音乐收藏", "album": "星河信号", "duration": "03:56", "group": "轻音乐", "cover": "/assets/images/themes/star02.png", "src": null},
-    {"id": "memory", "name": "时光的回声", "description": "有些旋律，会让人想起旧日的风景。", "quote": "有些旋律，会把旧日重新照亮。", "artist": "音乐收藏", "album": "回忆放映室", "duration": "05:07", "group": "原声", "cover": "/assets/images/themes/gribs.jpg", "src": null}
+    {"id": "afternoon", "name": "午后微风", "description": "适合窗边阅读的轻柔旋律。", "quote": "把一段安静，留给午后的窗边。", "artist": "作者", "album": "日光散步", "duration": "03:42", "group": "轻音乐", "cover": "/assets/images/default/hd.webp", "src": null},
+    {"id": "journey", "name": "远方来信", "description": "让思绪去往没有到过的地方。", "quote": "把地图折好，去往还没有名字的地方。", "artist": "作者", "album": "旅途原声", "duration": "04:18", "group": "原声", "cover": "/assets/images/themes/kyotoanimation.png", "src": null},
+    {"id": "night", "name": "夜色随想", "description": "把忙碌放下，听见晚风。", "quote": "夜色慢下来，耳朵便听见了风。", "artist": "作者", "album": "星河信号", "duration": "03:56", "group": "轻音乐", "cover": "/assets/images/themes/star02.png", "src": null},
+    {"id": "memory", "name": "时光的回声", "description": "有些旋律，会让人想起旧日的风景。", "quote": "有些旋律，会把旧日重新照亮。", "artist": "作者", "album": "回忆放映室", "duration": "05:07", "group": "原声", "cover": "/assets/images/themes/gribs.jpg", "src": null}
   ],
   "messages": [
     {"id": "welcome", "name": "小站主人", "text": "欢迎来到留言板！有什么想法或者想说的话，都可以写在这里。这是一条演示留言。", "date": "2026-10-04T09:00:00+08:00"}

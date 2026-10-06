@@ -7,9 +7,9 @@
     "dev": "node scripts/server.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/server.mjs --dist",
-    "check": "node --check src/app.js && node --check src/home.js && node --check src/home-clock.js && node --check src/compass-caption.js && node --check src/hero-terminal.js && node --check src/api.js && node --check src/article-archive.js && node --check src/archive-state.js && node --check src/archive-scene.js && node --check src/archive-entry.js && node --check src/archive-performance.js && node --check src/archive-drag.js && node --check scripts/server.mjs",
+    "check": "node --check src/app.js && node --check src/liquid-glass.js && node --check src/friend-aquarium.js && node --check src/music-cassette.js && node --check src/music-transport.js && node --check src/floating-player.js && node --check src/cassette/textures.js && node --check src/home.js && node --check src/home-clock.js && node --check src/compass-caption.js && node --check src/hero-terminal.js && node --check src/api.js && node --check src/article-archive.js && node --check src/archive-state.js && node --check src/archive-scene.js && node --check src/archive-entry.js && node --check src/archive-performance.js && node --check src/archive-drag.js && node --check scripts/server.mjs",
     "verify": "node scripts/verify.mjs",
-    "test": "node --test scripts/posts.test.mjs scripts/terminal.test.mjs scripts/home.test.mjs scripts/clock.test.mjs scripts/caption.test.mjs scripts/archive.test.mjs",
+    "test": "node --test scripts/posts.test.mjs scripts/terminal.test.mjs scripts/home.test.mjs scripts/clock.test.mjs scripts/caption.test.mjs scripts/archive.test.mjs scripts/music.test.mjs",
     "vendor:rhine": "node scripts/vendor-rhine.mjs"
   },
   "dependencies": {

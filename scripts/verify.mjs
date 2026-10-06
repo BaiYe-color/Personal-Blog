@@ -28,6 +28,16 @@ async function imports(url) {
   }
 }
 await imports('/src/archive-scene.js');
+await imports('/src/music-cassette.js');
+assets.add('/src/music.css');
+assets.add('/src/glass-ui.css');
+assets.add('/src/guestbook.css');
+assets.add('/src/content-glass.css');
+assets.add('/src/liquid-glass.css');
+assets.add('/src/liquid-glass.js');
+assets.add('/src/friend-aquarium.js');
+assets.add('/src/floating-player.js');
+assets.add('/src/music-transport.js');
 assets.add('/src/rhine/fonts.css');
 for (const match of (await fs.readFile(path.join(workspace, 'src/rhine/fonts.css'), 'utf8')).matchAll(/url\("([^"]+)"\)/g)) assets.add(match[1]);
 for (const asset of assets) {
@@ -42,4 +52,15 @@ for (const route of routes) {
   assert.match(await result.text(), /id="app"/, `缺少前端入口：${route}`);
 }
 assert.equal((await fetch(origin + '/package.json')).status, 404, '开发服务不应暴露项目配置文件');
+// Seeking audio relies on the same byte-range support as other static files.
+const rangeAsset = origin + '/assets/openai.svg';
+const full = new Uint8Array(await (await fetch(rangeAsset)).arrayBuffer());
+assert.equal(Number((await fetch(rangeAsset, { method: 'HEAD' })).headers.get('content-length')), full.length);
+for (const [range, start, end] of [['bytes=0-7', 0, 8], ['bytes=8-', 8, full.length], ['bytes=-12', full.length - 12, full.length]]) {
+  const partial = await fetch(rangeAsset, { headers: { Range: range } });
+  assert.equal(partial.status, 206);
+  assert.equal(partial.headers.get('content-range'), `bytes ${start}-${end - 1}/${full.length}`);
+  assert.deepEqual(new Uint8Array(await partial.arrayBuffer()), full.subarray(start, end));
+}
+assert.equal((await fetch(rangeAsset, { headers: { Range: `bytes=${full.length}-` } })).status, 416);
 console.log(`验证通过：${assets.size} 个静态资源、${routes.length} 个直接访问路由。页面渲染及交互另通过浏览器验证。`);

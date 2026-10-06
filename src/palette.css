@@ -85,7 +85,7 @@ body { background-color: var(--canvas); background-image: linear-gradient(90deg,
 .music-gallery .gallery-item { background: var(--lavender-soft); border-color: var(--lavender); }
 .music-card.is-selected { outline-color: var(--blue); }
 .music-play-icon { background: #45414eb3; border-color: var(--lavender); }
-.music-player { border-color: var(--blue); background: var(--blue-soft); }
+
 .moments-container .moments-item .moment-inner { background: var(--item-soft) !important; border-left: 3px solid var(--item-accent); }
 .moments-container .moments-item .moment-inner::after { border-right-color: var(--item-soft); }
 .guest-avatar { background: var(--item-soft); color: var(--item-ink); }

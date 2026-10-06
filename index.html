@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="/src/styles.css">
   <link rel="stylesheet" href="/src/palette.css">
   <link rel="stylesheet" href="/src/home.css">
+  <link rel="stylesheet" href="/src/music.css">
   <link rel="stylesheet" href="/src/article-archive.css">
+  <link rel="stylesheet" href="/src/glass-ui.css">
+  <link rel="stylesheet" href="/src/guestbook.css">
+  <link rel="stylesheet" href="/src/content-glass.css">
+  <link rel="stylesheet" href="/src/liquid-glass.css">
   <script type="importmap">{"imports":{"three":"/assets/vendor/three/build/three.module.js","three/addons/":"/assets/vendor/three/addons/"}}</script>
 </head>
 <body>
@@ -26,6 +31,16 @@
   <dialog id="contact-qr-dialog" aria-labelledby="contact-qr-title">
     <div class="dialog-head"><h2 id="contact-qr-title">联系二维码</h2><button data-close aria-label="关闭二维码">×</button></div>
     <div class="contact-qr-frame"><img id="contact-qr-image" alt="" hidden><p id="contact-qr-empty">二维码待添加</p></div>
+  </dialog>
+  <dialog id="guestbook-dialog" aria-labelledby="guestbook-title" aria-describedby="guestbook-dialog-hint">
+    <div class="guestbook-dialog-head"><div><p>LEAVE A NOTE</p><h2 id="guestbook-title">写一条留言</h2></div><button type="button" data-close aria-label="关闭留言弹窗"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <p id="guestbook-dialog-hint">一声问候，一个想法，或一段此刻的心情。</p>
+    <form id="guestbook-form" class="guestbook-form">
+      <label for="guest-name">昵称</label><input id="guest-name" name="name" required maxlength="30" placeholder="怎么称呼你？" autocomplete="nickname">
+      <label for="guest-message">留言</label><textarea id="guest-message" name="text" required maxlength="1000" rows="5" placeholder="有什么想对小站说的？"></textarea>
+      <div class="guestbook-submit"><span id="message-count">0 / 1000</span><button class="guestbook-send" type="submit"><span>保存留言</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0M13 6l6 6-6 6"/></svg></button></div>
+      <p class="guestbook-storage-hint">当前留言仅保存在此浏览器中。</p><p id="message-status" role="status"></p>
+    </form>
   </dialog>
   <div id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="/src/app.js"></script>

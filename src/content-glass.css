@@ -1,0 +1,84 @@
+/* 友链与关于页：让内容卡片保留背景的色彩与景深。 */
+.link-article,
+.about-sidebar,
+.about-signature,
+.github-heatmap,
+.about-site-data article {
+  color: #29455f;
+  border-color: #ffffff75;
+  background: linear-gradient(135deg, #ffffff40, #dce7f124);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  box-shadow: inset 0 1px #ffffff59, 0 14px 40px #263c5622;
+}
+
+.link-article { padding: 28px; }
+.link-article .linkdes,
+.about-sidebar .about-bio,
+.about-sidebar-facts dt,
+.github-heat-legend,
+.about-site-data span { color: #526f89; }
+.friend-group + .friend-group { margin-top: 34px; }
+.link-article .links .link-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; margin: 16px 0 0; padding: 0; list-style: none; }
+.link-article .links .link-items .link-item { position: relative; min-width: 0; padding: 0; overflow: hidden; border: 1px solid #ffffff73; border-top: 1px solid #ffffff73; border-radius: 28px 28px 28px 10px; background: color-mix(in srgb, var(--item-soft) 26%, transparent); box-shadow: inset 0 1px #ffffff50, 0 8px 22px #263c5615; backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); transition: transform .26s cubic-bezier(.2,.8,.2,1), background .26s, box-shadow .26s; }
+.link-article .links .link-items .link-item::before { content: ''; position: absolute; width: 88px; height: 88px; right: -34px; bottom: -43px; border: 1px solid color-mix(in srgb, var(--item-accent) 58%, transparent); border-radius: 50%; opacity: .75; }
+.link-article .links .link-items .link-item::after { content: ''; position: absolute; width: 7px; height: 7px; top: 18px; right: 18px; border-radius: 50%; background: var(--item-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--item-accent) 16%, transparent); }
+.link-article .links .link-items .link-item:hover { transform: translateY(-5px); background: color-mix(in srgb, var(--item-soft) 43%, transparent); box-shadow: inset 0 1px #ffffff68, 0 17px 30px #263c5629; }
+.link-article .link-item-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; min-height: 106px; padding: 17px 52px 17px 17px; color: inherit; text-decoration: none; }
+.friend-avatar { display: grid; place-items: center; width: 58px; height: 58px; flex: 0 0 58px; padding: 4px; border: 1px solid #ffffff86; border-radius: 50%; background: #ffffff33; box-shadow: inset 0 1px #ffffff75, 0 6px 16px #263c5620; }
+.friend-avatar img { display: block; width: 100%; height: 100%; max-width: none; border-radius: 50%; object-fit: cover; }
+.friend-copy { display: grid; min-width: 0; gap: 5px; }
+.link-article .link-item .sitename { overflow: hidden; font-size: 16px; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; }
+.link-article .link-item .linkdes { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 12px; line-height: 1.55; }
+.friend-enter { position: absolute; right: 18px; bottom: 16px; color: var(--item-ink); font: 19px/1 Georgia, serif; transition: transform .24s; }
+.link-item-inner:hover .friend-enter { transform: translate(2px, -2px); }
+
+.about-sidebar { background: linear-gradient(160deg, #9cbce32e, #ffffff1c 45%, #e1dbe92b); }
+.about-sidebar-facts,
+.about-sidebar .about-bio { border-color: #ffffff42; }
+.about-sidebar-facts div { border-color: #ffffff38; }
+.about-social-logo {
+  border-color: #ffffff67;
+  background: #ffffff26;
+  box-shadow: inset 0 1px #ffffff51;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.about-social-logo:hover { background: #9cbce34b; }
+.about-signature { border-left-color: var(--apricot); }
+.about-signature blockquote { color: #243f5a; }
+.github-heatmap { background: linear-gradient(135deg, #9cbce328, #ffffff1e); }
+.about-site-data article { padding: 20px 14px; border: 1px solid #ffffff67; border-bottom: 2px solid var(--blue); }
+.about-site-data article:nth-child(2) { border-bottom-color: var(--lavender); }
+.about-site-data article:nth-child(3) { border-bottom-color: var(--apricot); }
+
+html[data-theme="dark"] .link-article,
+html[data-theme="dark"] .about-sidebar,
+html[data-theme="dark"] .about-signature,
+html[data-theme="dark"] .github-heatmap,
+html[data-theme="dark"] .about-site-data article {
+  color: #e2e9f4;
+  border-color: #ffffff46;
+  background: linear-gradient(135deg, #182d444b, #2b294745);
+  box-shadow: inset 0 1px #ffffff32, 0 14px 40px #0c152738;
+}
+html[data-theme="dark"] .link-article .links .link-items .link-item {
+  border-color: #ffffff50;
+  border-top-color: #ffffff50;
+  background: color-mix(in srgb, var(--item-soft) 22%, transparent);
+  box-shadow: inset 0 1px #ffffff25;
+}
+html[data-theme="dark"] .link-article .links .link-items .link-item:hover { background: color-mix(in srgb, var(--item-soft) 39%, transparent); }
+html[data-theme="dark"] .about-sidebar { background: linear-gradient(160deg, #1b395350, #2028393b 45%, #352e5044); }
+html[data-theme="dark"] .about-social-logo { border-color: #ffffff46; background: #ffffff17; box-shadow: inset 0 1px #ffffff28; }
+html[data-theme="dark"] .link-article .linkdes,
+html[data-theme="dark"] .about-sidebar .about-bio,
+html[data-theme="dark"] .about-sidebar-facts dt,
+html[data-theme="dark"] .github-heat-legend,
+html[data-theme="dark"] .about-site-data span { color: #b8c6d6; }
+html[data-theme="dark"] .about-signature blockquote { color: #f1f5fb; }
+
+@media (max-width: 768px) {
+  .link-article { padding: 18px; }
+  .link-article .links .link-items { grid-template-columns: 1fr; gap: 12px; }
+}
