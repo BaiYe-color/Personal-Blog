@@ -29,12 +29,16 @@ const glyphs = {
   E: 'M18 2H2v8h12M2 15v8h16', F: 'M18 2H2v8h12M2 15v8',
   G: 'M18 3H8L2 9v8l6 6h10V13h-7', H: 'M2 2v21M18 2v8M18 15v8M2 12h16',
   I: 'M10 2v8M10 14v9', J: 'M18 2v15l-6 6H7l-5-5',
+  K: 'M2 2v21M18 2l-9 10 9 11',
   L: 'M2 2v15l6 6h10', M: 'M2 23V2l8 10 8-10v8M18 15v8',
   N: 'M2 23V2l16 21M18 2v14', O: 'M8 2h5l5 6v9l-5 6H7l-5-6V8',
   P: 'M2 23V2h10l6 5-6 6H7', R: 'M2 23V2h10l6 5-6 6H7M11 15l8 8',
+  Q: 'M8 2h5l5 6v9l-5 6H7l-5-6V8M12 17l7 7',
   S: 'M18 2H8L2 8l5 4h6l5 5-6 6H2', T: 'M1 2h18M10 8v15',
   U: 'M2 2v15l6 6h4l6-6v-5M18 2v5', V: 'M1 2l9 21 9-21',
   Y: 'M1 2l9 10 9-10M10 17v6',
+  W: 'M1 2l4 21 5-12 5 12 4-21', X: 'M2 2l16 21M18 2l-6 8M8 14l-6 9',
+  Z: 'M2 2h16L2 23h16',
 };
 export function geometricWord(word) {
   const letters = [...String(word).toUpperCase()].filter(letter => glyphs[letter]);

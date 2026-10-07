@@ -3,7 +3,7 @@ import { publishedAt, updatedAt, categoriesOf, shortDate, sortPosts } from './po
 import { initPendant } from './pendant.js';
 import { initHeroTerminal } from './hero-terminal.js';
 import { initHome, initPagedDeck } from './home.js';
-import { clockMarkup } from './home-clock.js';
+import { clockMarkup, geometricWord } from './home-clock.js';
 import { archiveMarkup, initArticleArchive } from './article-archive.js';
 import { adjacentTrack, formatAudioTime } from './music-transport.js';
 import { floatingPlayerMarkup } from './floating-player.js';
@@ -120,6 +120,12 @@ function showContactQr(kind) {
   openDialog(dialog);
 }
 function banner(title, subtitle, cover = data.site.cover) { return `<section class="page-banner">${image(cover, '', '', true)}<div><h1>${escape(title)}</h1><p>${escape(subtitle)}</p></div></section>`; }
+function pageEnglishMarkup() {
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  const names = { '/': 'HOME', '/articles': 'ARTICLES', '/photos': 'GALLERY', '/music': 'MUSIC', '/moments': 'MOMENTS', '/pet': 'MASCOT', '/guestbook': 'GUESTBOOK', '/links': 'FRIENDS', '/about': 'ABOUT', '/login': 'LOGIN', '/articles/categories': 'CATEGORIES', '/articles/tags': 'TAGS' };
+  const name = names[path] || (path.startsWith('/posts/') ? 'ARTICLE' : path.startsWith('/articles/categories/') ? 'CATEGORY' : path.startsWith('/articles/tags/') ? 'TAG' : 'NOT FOUND');
+  return `<p class="page-english-name" aria-label="${name}" style="--name-width:${name.replace(/[^A-Z]/g, '').length * 20}px">${geometricWord(name)}</p>`;
+}
 function immerseCurrentPage() {
   const main = document.querySelector('#main-content');
   const bannerElement = main.querySelector(':scope > .page-banner');
@@ -133,7 +139,7 @@ function immerseCurrentPage() {
   main.replaceChildren();
   const page = document.createElement('div');
   page.className = 'immersive-page';
-  page.innerHTML = `<div class="immersive-backdrop" aria-hidden="true">${image(cover, '')}</div><section class="immersive-intro"><p>PERSONAL SPACE / ${escape(title).toUpperCase()}</p><h1>${escape(title)}</h1><span>${escape(subtitle)}</span></section>`;
+  page.innerHTML = `<div class="immersive-backdrop" aria-hidden="true">${image(cover, '')}</div><section class="immersive-intro">${pageEnglishMarkup()}<h1>${escape(title)}</h1><span>${escape(subtitle)}</span></section>`;
   page.append(content);
   main.append(page);
 }
@@ -249,7 +255,7 @@ function photoContent() {
     const items = data.photos.filter(photo => photo.group === group);
     const stack = [items[2] || items[0], items[1] || items[0], items[0]].filter(Boolean);
     const cover = items[0];
-    return `<article class="photo-album-card"><div class="photo-stack" aria-label="${escape(group)}相册，${items.length} 张照片">${stack.map((photo, index) => `<div class="photo-stack-frame liquid-glass photo-stack-frame--${index}" data-liquid-glass><img src="${escape(safeUrl(photo.src))}" alt="${escape(photo.name)}" loading="lazy"></div>`).join('')}<button class="photo-stack-open image-button" data-album="${escape(group)}" aria-label="打开 ${escape(group)} 图集"><span>OPEN</span></button></div><div class="photo-album-info"><span>${String(items.length).padStart(2, '0')} FRAMES</span><h2>${escape(group)}</h2><p>${escape(cover.description)}</p></div></article>`;
+    return `<article class="photo-album-card"><div class="photo-stack" aria-label="${escape(group)}相册，${items.length} 张照片">${stack.map((photo, index) => `<div class="photo-stack-frame photo-stack-frame--${index}"><img src="${escape(safeUrl(photo.src))}" alt="${escape(photo.name)}" loading="lazy"></div>`).join('')}<button class="photo-stack-open image-button" data-album="${escape(group)}" aria-label="打开 ${escape(group)} 图集"><span>OPEN</span></button></div><div class="photo-album-info"><span>${String(items.length).padStart(2, '0')} FRAMES</span><h2>${escape(group)}</h2><p>${escape(cover.description)}</p></div></article>`;
   }).join('');
   return `<section class="photo-album-grid" aria-label="分类图集">${albums || '<p class="empty-state">还没有图集。</p>'}</section>`;
 }
@@ -405,7 +411,20 @@ function refreshGuestbook() {
   if (count) count.textContent = messages.length + (data.messages || []).length;
 }
 function petPage() {
-  return banner('看板娘', '陪伴小站的角落，正在准备中。', pageCover('pet')) + '<div class="page-content pet-page" aria-label="看板娘内容区"></div>';
+  const comicPanels = ['panel-01.png', 'panel-02.png', 'panel-03.png'];
+  return `<div class="home-deck pet-deck" data-layer="0"><div class="home-track">
+    <section class="home-layer pet-landing" aria-label="看板娘首页">
+      <div class="pet-comic-background"><div class="pet-comic-panels" aria-hidden="true">${[0, 1].map(() => `<div class="pet-comic-sequence">${comicPanels.map(panel => image(`/assets/images/pet/${panel}`, '', 'pet-comic-panel', true)).join('')}</div>`).join('')}</div><div class="pet-comic-wash" aria-hidden="true"></div>
+      ${image('/assets/images/pet/character-cutout.png', '看板娘', 'pet-character', true)}</div>
+      <h1 class="pet-visually-hidden">看板娘</h1>
+      <button class="article-landing-next pet-landing-next" data-home-layer="1" aria-label="进入看板娘档案"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+    </section>
+    <section class="home-layer pet-studio" aria-label="看板娘档案" aria-hidden="true" inert>
+      <div class="pet-studio-background" aria-hidden="true">${image('/assets/images/pet/panel-03.png', '', '', true)}</div>
+      <div class="pet-studio-frost" aria-hidden="true"></div>
+      <div class="pet-studio-copy"><p>MASCOT NOTES</p><h2>看板娘档案</h2><span>正在准备中。</span></div>
+    </section>
+  </div><nav class="home-layer-nav" aria-label="看板娘层级">${['看板娘', '档案'].map((title, i) => `<button data-home-layer="${i}" aria-label="前往${title}层" aria-current="${i === 0 ? 'step' : 'false'}"><i></i><span>${title}</span></button>`).join('')}</nav></div>`;
 }
 function playerMarkup() {
   return floatingPlayerMarkup(musicPlayMode);
@@ -497,7 +516,7 @@ function render() {
   homeController?.destroy(); homeController = null;
   document.documentElement.classList.toggle('is-home', location.pathname === '/');
   document.documentElement.classList.toggle('is-music', location.pathname === '/music');
-  document.documentElement.classList.toggle('is-paged', ['/', '/articles', '/music'].includes(location.pathname));
+  document.documentElement.classList.toggle('is-paged', ['/', '/articles', '/music', '/pet'].includes(location.pathname));
   if (!document.querySelector('#main-content')) {
     app.innerHTML = navigation() + `<main id="main-content"></main>` + playerMarkup();
     pendant = initPendant({ onRelease: () => homeController ? homeController.goTo(0) : window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }), onActivity: updateHeader });
@@ -515,7 +534,8 @@ function render() {
     });
   }
   document.querySelector('#main-content').innerHTML = mainContent();
-  if (!['/', '/articles', '/music'].includes(location.pathname)) immerseCurrentPage();
+  document.querySelector('.article-landing-copy > p')?.replaceWith(document.createRange().createContextualFragment(pageEnglishMarkup()));
+  if (!['/', '/articles', '/music', '/pet'].includes(location.pathname)) immerseCurrentPage();
   const deck = document.querySelector('.home-deck');
   if (deck?.classList.contains('article-deck')) {
     archiveController = initArticleArchive(deck.querySelector('.article-archive'), data);
@@ -547,6 +567,8 @@ function render() {
     const preload = () => loadMusicCassetteModule().catch(() => {});
     if ('requestIdleCallback' in window) window.requestIdleCallback(preload, { timeout: 1800 });
     else window.setTimeout(preload, 700);
+  } else if (deck?.classList.contains('pet-deck')) {
+    homeController = initPagedDeck(deck, { onLayerChange: () => updateHeader() });
   } else if (deck) {
     homeController = initHome(deck, { onLayerChange: index => { updateHeader(); }, festivals: data.site.festivals });
   }
